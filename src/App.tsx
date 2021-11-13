@@ -1,19 +1,23 @@
 import React, {useState} from "react"
 import classes from "./App.module.css"
-import {CounterComponent} from "./Components/CounterComponent";
+import {CounterComponent} from "./Components/Counter/CounterComponent";
+import {SettingsForCounter} from "./Components/SettingsForCounter/SettingsForCounter";
 
 function App() {
 
-    const [counter, setCounter] = useState<number>(0)
-    const maxCounter = 2
+    const [maxCounter, setMaxCounter] = useState<number>(5)
+    const [minCounter, setMinCounter] = useState<number>(1)
+
+    const [counter, setCounter] = useState<number>(minCounter)
+
 
     const incCounter = () => {
-        if(counter < maxCounter){
+        if (counter < maxCounter) {
             setCounter(counter + 1)
         }
     }
     const resetCounter = () => {
-        setCounter(0)
+        setCounter(minCounter)
     }
 
     return (
@@ -21,7 +25,17 @@ function App() {
             <CounterComponent counter={counter}
                               incCounter={incCounter}
                               resetCounter={resetCounter}
-                              maxCounter={maxCounter}/>
+                              maxCounter={maxCounter}
+                              minCounter={minCounter}
+                              setCounter={setCounter}
+            />
+
+
+            <SettingsForCounter maxCounter={maxCounter}
+                                minCounter={minCounter}
+                                setMaxCounter={setMaxCounter}
+                                setMinCounter={setMinCounter}
+            />
         </div>
     );
 }

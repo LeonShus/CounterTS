@@ -1,6 +1,11 @@
 .container {
+    width: 400px;
+    height: 400px;
     border: 1px solid black;
     border-radius: 5px;
-    width: 140px;
-    margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
 }
