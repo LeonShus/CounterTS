@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react"
+import React, {useEffect} from "react"
 import classes from "./CounterComponent.module.css"
 import {Button} from "../DefaultComponent/Button";
 
@@ -29,6 +29,7 @@ export const CounterComponent = ({
 
     const disableFunc = (n: number) => counter === n
 
+    //Стиль maxCounter
     const maxCounterStyle = counter >= maxCounter ? classes.maxVal : ""
 
     return (

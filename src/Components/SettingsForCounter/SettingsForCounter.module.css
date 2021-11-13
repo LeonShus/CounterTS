@@ -1,0 +1,28 @@
+.btnSet{
+    grid-template-columns: 1fr;
+}
+
+.inputsCont input{
+    font-size: 2rem;
+    color: #ffc719;
+    background-color: #2e1f54;
+    border: none;
+    border-radius: 5px;
+    outline: 2px solid #2e1f54;
+    transition: outline-offset .2s ease;
+}
+
+.inputsCont input:focus{
+    outline-offset: 2px
+}
+
+.settCont{
+    height: 230px;
+    color: #2e1f54;
+    background-color: #ffc719;
+    font-size: 2.3rem;
+    border: 2px solid #ffc719;
+    border-radius: 5px;
+    text-align: center;
+    margin-bottom: 5px;
+}

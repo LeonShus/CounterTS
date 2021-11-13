@@ -4,27 +4,39 @@
 .counter{
     height: 230px;
     font-size: 10rem;
-    border: 1px solid red;
+    border: 2px solid #ffc719;
     border-radius: 5px;
     text-align: center;
     margin-bottom: 5px;
+    background-color: #ffc719;
+    color: #2e1f54;
 }
 .btnCont{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     align-items: center;
     grid-gap: 5px;
-
     height: 120px;
-    border: 1px solid blue;
     border-radius: 5px;
     padding: 5px;
 }
 .btn {
+    border: 2px solid #2e1f54;
+    border-radius: 5px;
     height: 80px;
-    font-size: 2.2rem;
-
+    font-size: 2.3rem;
+    color: #2e1f54;
+    background-color: #ffc719;
+    transition: background-color 0.5s;
 }
+
+.btn:hover {
+    border: 2px solid #ffc719;
+    color: #ffc719;
+    background-color: #2e1f54;
+    transition: background-color 0.5s;
+}
+
 .maxVal{
-    color: red;
+    color: #f00a36;
 }

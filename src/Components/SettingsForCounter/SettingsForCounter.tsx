@@ -1,5 +1,6 @@
 import React, {ChangeEvent} from "react"
-import classes from "../Counter/CounterComponent.module.css";
+import classes from "../Counter/CounterComponent.module.css"
+import classesSet from "./SettingsForCounter.module.css"
 import {Button} from "../DefaultComponent/Button";
 
 type SettingsForCounterPropsType = {
@@ -36,18 +37,20 @@ export const SettingsForCounter = ({
 
     return (
         <div className={classes.container}>
-            <div className={` ${classes.counter}`}>
+            <div className={` ${classesSet.settCont} ${classesSet.inputsCont}`}>
+                Min
                 <input type="number"
                        value={minCounter}
                        onChange={inpMinHandler}
                 />
+                Max
                 <input type="number"
                        value={maxCounter}
                        onChange={inpMaxHandler}
                 />
             </div>
-            <div className={classes.btnCont}>
-                <Button style={classes.btn} callback={() => props.setSettingsVisible(false)} name={"Set"}/>
+            <div className={`${classes.btnCont} ${classesSet.btnSet}`}>
+                <Button style={classes.btn} callback={() => props.setSettingsVisible(false)} name={"Save"}/>
             </div>
         </div>
     )
