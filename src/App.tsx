@@ -23,6 +23,7 @@ function App() {
 
     return (
         <div className={classes.container}>
+            {!settingsVisible &&
             <CounterComponent counter={counter}
                               incCounter={incCounter}
                               resetCounter={resetCounter}
@@ -30,15 +31,16 @@ function App() {
                               minCounter={minCounter}
                               setCounter={setCounter}
                               setSettingsVisible={setSettingsVisible}
-            />
+            />}
 
 
+            {settingsVisible &&
             <SettingsForCounter maxCounter={maxCounter}
                                 minCounter={minCounter}
                                 setMaxCounter={setMaxCounter}
                                 setMinCounter={setMinCounter}
                                 setSettingsVisible={setSettingsVisible}
-            />
+            />}
         </div>
     );
 }
