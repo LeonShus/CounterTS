@@ -9,6 +9,7 @@ type CounterComponentType = {
     maxCounter: number
     minCounter: number
     setCounter: (e: number) => void
+    setSettingsVisible: (e: boolean) => void
 }
 
 export const CounterComponent = ({
@@ -38,7 +39,7 @@ export const CounterComponent = ({
             <div className={classes.btnCont}>
                 <Button style={classes.btn} disabled={disableFunc(maxCounter)} callback={incCounter} name={"Inc"}/>
                 <Button style={classes.btn} disabled={disableFunc(minCounter)} callback={resetCounter} name={"Reset"}/>
-                <Button style={classes.btn} callback={resetCounter} name={"Set"}/>
+                <Button style={classes.btn} callback={() => props.setSettingsVisible(true)} name={"Set"}/>
             </div>
 
         </div>

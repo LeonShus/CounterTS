@@ -5,6 +5,7 @@ import {SettingsForCounter} from "./Components/SettingsForCounter/SettingsForCou
 
 function App() {
 
+    const [settingsVisible, setSettingsVisible] = useState<boolean>(false)
     const [maxCounter, setMaxCounter] = useState<number>(5)
     const [minCounter, setMinCounter] = useState<number>(1)
 
@@ -28,6 +29,7 @@ function App() {
                               maxCounter={maxCounter}
                               minCounter={minCounter}
                               setCounter={setCounter}
+                              setSettingsVisible={setSettingsVisible}
             />
 
 
@@ -35,6 +37,7 @@ function App() {
                                 minCounter={minCounter}
                                 setMaxCounter={setMaxCounter}
                                 setMinCounter={setMinCounter}
+                                setSettingsVisible={setSettingsVisible}
             />
         </div>
     );

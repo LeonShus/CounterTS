@@ -7,15 +7,18 @@ type SettingsForCounterPropsType = {
     minCounter: number
     setMaxCounter: (e: number) => void
     setMinCounter: (e: number) => void
+    setSettingsVisible: (e: boolean) => void
 }
 
 export const SettingsForCounter = ({
                                        maxCounter,
                                        minCounter,
                                        setMaxCounter,
-                                       setMinCounter
+                                       setMinCounter,
+                                       ...props
                                    }: SettingsForCounterPropsType) => {
 
+    //Проверяем и сетаем max
     const inpMaxHandler = (e: ChangeEvent<HTMLInputElement>) => {
         const maxNum = parseInt(e.currentTarget.value)
 
@@ -23,6 +26,7 @@ export const SettingsForCounter = ({
         setMaxCounter(maxNum)
     }
 
+    //Проверяем и сетаем min
     const inpMinHandler = (e: ChangeEvent<HTMLInputElement>) => {
         const minNum = parseInt(e.currentTarget.value)
 
@@ -43,7 +47,7 @@ export const SettingsForCounter = ({
                 />
             </div>
             <div className={classes.btnCont}>
-                <Button style={classes.btn} callback={() => alert("weqwe")} name={"Set"}/>
+                <Button style={classes.btn} callback={() => props.setSettingsVisible(false)} name={"Set"}/>
             </div>
         </div>
     )
