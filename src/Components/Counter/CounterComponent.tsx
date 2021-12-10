@@ -1,45 +1,54 @@
 import React, {useEffect} from "react"
 import classes from "./CounterComponent.module.css"
 import {Button} from "../DefaultComponent/Button";
+import {useDispatch, useSelector} from "react-redux";
+import {AppStateType} from "../../BLL/Store";
+import {incCountAC, setCountValueAC} from "../../BLL/Reducers/CounterReducer";
 
 type CounterComponentType = {
-    counter: number
-    incCounter: () => void
     resetCounter: () => void
-    maxCounter: number
-    minCounter: number
-    // setCounter: (e: number) => void
+    maxVal: number
+    minVal: number
     setSettingsVisible: (e: boolean) => void
 }
 
 export const CounterComponent = ({
-                                     counter, incCounter, resetCounter,
-                                     maxCounter, minCounter, ...props
+                                     resetCounter,
+                                     maxVal, minVal, ...props
                                  }: CounterComponentType) => {
 
-    //Проверка на валидный counter
-    // useEffect(() => {
-    //     counter > maxCounter &&
-    //     props.setCounter(maxCounter)
-    //
-    //     counter < minCounter &&
-    //     props.setCounter(minCounter)
-    //
-    // }, [maxCounter, minCounter])
+    const dispatch = useDispatch()
+    const countVal = useSelector<AppStateType, number>(state => state.counter.value)
 
-    const disableFunc = (n: number) => counter === n
+    const incCounter = () => {
+        if (countVal < maxVal) {
+            dispatch(incCountAC())
+        }
+    }
+
+    //Проверка на валидный counter
+    useEffect(() => {
+        countVal > maxVal &&
+        dispatch(setCountValueAC(maxVal))
+
+        countVal < minVal &&
+        dispatch(setCountValueAC(minVal))
+
+    }, [maxVal, minVal])
+
+    const disableFunc = (n: number) => countVal === n
 
     //Стиль maxCounter
-    const maxCounterStyle = counter >= maxCounter ? classes.maxVal : ""
+    const maxCounterStyle = countVal >= maxVal ? classes.maxVal : ""
 
     return (
         <div className={classes.container}>
             <div className={`${maxCounterStyle} ${classes.counter}`}>
-                {counter}
+                {countVal}
             </div>
             <div className={classes.btnCont}>
-                <Button style={classes.btn} disabled={disableFunc(maxCounter)} callback={incCounter} name={"Inc"}/>
-                <Button style={classes.btn} disabled={disableFunc(minCounter)} callback={resetCounter} name={"Reset"}/>
+                <Button style={classes.btn} disabled={disableFunc(maxVal)} callback={incCounter} name={"Inc"}/>
+                <Button style={classes.btn} disabled={disableFunc(minVal)} callback={resetCounter} name={"Reset"}/>
                 <Button style={classes.btn} callback={() => props.setSettingsVisible(true)} name={"Set"}/>
             </div>
 
