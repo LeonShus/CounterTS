@@ -8,13 +8,13 @@ import {setMaxValueAC, setMinValueAC} from "../../BLL/Reducers/CounterReducer";
 type SettingsForCounterPropsType = {
     maxVal: number
     minVal: number
-    setSettingsVisible: (e: boolean) => void
+    isSettingsOpen: (e: boolean) => void
 }
 
 export const SettingsForCounter = ({
                                        maxVal,
                                        minVal,
-                                       ...props
+                                       isSettingsOpen
                                    }: SettingsForCounterPropsType) => {
 
     const dispatch = useDispatch()
@@ -49,7 +49,7 @@ export const SettingsForCounter = ({
                 />
             </div>
             <div className={`${classes.btnCont} ${classesSet.btnSet}`}>
-                <Button style={classes.btn} callback={() => props.setSettingsVisible(false)} name={"Save"}/>
+                <Button style={classes.btn} callback={() => isSettingsOpen(false)} name={"Save"}/>
             </div>
         </div>
     )

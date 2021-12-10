@@ -6,15 +6,13 @@ import {AppStateType} from "../../BLL/Store";
 import {incCountAC, setCountValueAC} from "../../BLL/Reducers/CounterReducer";
 
 type CounterComponentType = {
-    resetCounter: () => void
     maxVal: number
     minVal: number
-    setSettingsVisible: (e: boolean) => void
+    isSettingsOpen: (par: boolean) => void
 }
 
 export const CounterComponent = ({
-                                     resetCounter,
-                                     maxVal, minVal, ...props
+                                     maxVal, minVal, isSettingsOpen
                                  }: CounterComponentType) => {
 
     const dispatch = useDispatch()
@@ -24,6 +22,10 @@ export const CounterComponent = ({
         if (countVal < maxVal) {
             dispatch(incCountAC())
         }
+    }
+
+    const resetCount = () => {
+        dispatch(setCountValueAC(minVal))
     }
 
     //Проверка на валидный counter
@@ -48,8 +50,8 @@ export const CounterComponent = ({
             </div>
             <div className={classes.btnCont}>
                 <Button style={classes.btn} disabled={disableFunc(maxVal)} callback={incCounter} name={"Inc"}/>
-                <Button style={classes.btn} disabled={disableFunc(minVal)} callback={resetCounter} name={"Reset"}/>
-                <Button style={classes.btn} callback={() => props.setSettingsVisible(true)} name={"Set"}/>
+                <Button style={classes.btn} disabled={disableFunc(minVal)} callback={resetCount} name={"Reset"}/>
+                <Button style={classes.btn} callback={() => isSettingsOpen(true)} name={"Set"}/>
             </div>
 
         </div>

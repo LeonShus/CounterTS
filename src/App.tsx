@@ -1,10 +1,9 @@
-import React, {useEffect, useState} from "react"
+import React, {useState} from "react"
 import classes from "./App.module.css"
 import {CounterComponent} from "./Components/Counter/CounterComponent";
 import {SettingsForCounter} from "./Components/SettingsForCounter/SettingsForCounter";
 import {useDispatch, useSelector} from "react-redux";
 import {AppStateType} from "./BLL/Store";
-import {incCountAC} from "./BLL/Reducers/CounterReducer";
 
 function App() {
     const dispatch = useDispatch()
@@ -14,25 +13,24 @@ function App() {
 
     const [settingsVisible, setSettingsVisible] = useState<boolean>(false)
 
-    const resetCounter = () => {
-        // setCounter(minCounter)
+    const isSettingsOpen = (par: boolean) => {
+        setSettingsVisible(par)
     }
 
     return (
         <div className={classes.container}>
             {!settingsVisible &&
             <CounterComponent
-                              resetCounter={resetCounter}
-                              maxVal={maxVal}
-                              minVal={minVal}
-                              setSettingsVisible={setSettingsVisible}
+                maxVal={maxVal}
+                minVal={minVal}
+                isSettingsOpen={isSettingsOpen}
             />}
 
 
             {settingsVisible &&
             <SettingsForCounter maxVal={maxVal}
                                 minVal={minVal}
-                                setSettingsVisible={setSettingsVisible}
+                                isSettingsOpen={isSettingsOpen}
             />}
         </div>
     );
