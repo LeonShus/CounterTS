@@ -8,7 +8,7 @@ type CounterComponentType = {
     resetCounter: () => void
     maxCounter: number
     minCounter: number
-    setCounter: (e: number) => void
+    // setCounter: (e: number) => void
     setSettingsVisible: (e: boolean) => void
 }
 
@@ -18,14 +18,14 @@ export const CounterComponent = ({
                                  }: CounterComponentType) => {
 
     //Проверка на валидный counter
-    useEffect(() => {
-        counter > maxCounter &&
-        props.setCounter(maxCounter)
-
-        counter < minCounter &&
-        props.setCounter(minCounter)
-
-    }, [maxCounter, minCounter])
+    // useEffect(() => {
+    //     counter > maxCounter &&
+    //     props.setCounter(maxCounter)
+    //
+    //     counter < minCounter &&
+    //     props.setCounter(minCounter)
+    //
+    // }, [maxCounter, minCounter])
 
     const disableFunc = (n: number) => counter === n
 

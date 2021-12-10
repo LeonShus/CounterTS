@@ -2,8 +2,13 @@
     grid-template-columns: 1fr;
 }
 
+.inputsCont{
+    padding: 10px;
+}
+
 .inputsCont input{
     font-size: 2rem;
+    width: 300px;
     text-align: center;
     color: #ffc719;
     background-color: #2e1f54;

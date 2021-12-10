@@ -38,15 +38,15 @@ export const SettingsForCounter = ({
     return (
         <div className={classes.container}>
             <div className={` ${classesSet.settCont} ${classesSet.inputsCont}`}>
-                Min
-                <input type="number"
-                       value={minCounter}
-                       onChange={inpMinHandler}
-                />
                 Max
                 <input type="number"
                        value={maxCounter}
                        onChange={inpMaxHandler}
+                />
+                Min
+                <input type="number"
+                       value={minCounter}
+                       onChange={inpMinHandler}
                 />
             </div>
             <div className={`${classes.btnCont} ${classesSet.btnSet}`}>
