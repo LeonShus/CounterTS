@@ -1,6 +1,6 @@
-import React from "react"
 import {combineReducers, createStore} from "redux";
 import {counterReducer} from "./Reducers/CounterReducer";
+import {loadState, saveState} from "../Utils/LocalStorageUtils";
 
 const RootReducer = combineReducers({
     counter: counterReducer
@@ -8,6 +8,9 @@ const RootReducer = combineReducers({
 
 export type AppStateType = ReturnType<typeof RootReducer>
 
-export const store = createStore(RootReducer)
 
+export const store = createStore(RootReducer,loadState())
 
+store.subscribe(() => {
+    saveState(store.getState())
+})
