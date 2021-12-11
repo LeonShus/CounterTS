@@ -2,11 +2,10 @@ import React, {useState} from "react"
 import classes from "./App.module.css"
 import {CounterComponent} from "./Components/Counter/CounterComponent";
 import {SettingsForCounter} from "./Components/SettingsForCounter/SettingsForCounter";
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 import {AppStateType} from "./BLL/Store";
 
 function App() {
-    const dispatch = useDispatch()
 
     const maxVal = useSelector<AppStateType, number>(state => state.counter.maxValue)
     const minVal = useSelector<AppStateType, number>(state => state.counter.minValue)
